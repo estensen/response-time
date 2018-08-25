@@ -1,6 +1,12 @@
 import requests
 
-url = 'http://nrk.no'
-r = requests.get(url)
-print(r.status_code)
+urls = [
+    'https://nrk.no',
+    'https://ntnu.no',
+    'https://vg.no'
+]
+
+for url in urls:
+    r = requests.get(url)
+    print(r.status_code)
 
