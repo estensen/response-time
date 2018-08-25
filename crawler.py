@@ -1,4 +1,11 @@
+import concurrent.futures
 import requests
+
+
+def print_status(url):
+    r = requests.get(url)
+    print(r.status_code)
+
 
 urls = [
     'https://nrk.no',
@@ -6,7 +13,7 @@ urls = [
     'https://vg.no'
 ]
 
-for url in urls:
-    r = requests.get(url)
-    print(r.status_code)
+
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    executor.map(print_status, urls)
 
